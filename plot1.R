@@ -1,4 +1,6 @@
-d <- read.csv("household_power_consumption.txt", sep=";")
+temp <- tempfile()
+download.file("http://d396qusza40orc.cloudfront.net/exdata/data/household_power_consumption.zip", temp)
+d <- read.csv(unzip(temp), sep=";")
 d$Date <- as.Date(d$Date, format="%d/%m/%Y")
 d <- d[d$Date >= as.Date("2007-02-01") & d$Date <= as.Date("2007-02-02"),]
 
